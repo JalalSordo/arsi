@@ -1,2 +1,3 @@
 # ARSSI: Projet de module developpement WEB Avancée
-Technologies utilisées: JSP, TomCat, Mysql, JAva script, css
+Technologies utilisées: JSP, TomCat, Mysql, Java script, css
+
