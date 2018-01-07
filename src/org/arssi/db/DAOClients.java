@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package org.arssi.db;
 
-import bo.Client;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.arssi.bo.Client;
 
 /**
  *
@@ -35,22 +37,29 @@ public class DAOClients {
         }
     }
 
-    public Object[][] getAllClients() throws SQLException {
+    public ArrayList<Client> getAllClients() throws SQLException {
 
         Statement st = connection.createStatement();
-        ResultSet count = st.executeQuery("select count(*) from clients");
-        count.next();
-        Object[][] data = new Object[count.getInt(1)][4];
+        ArrayList<Client> clients = new ArrayList<Client>();
         ResultSet res = st.executeQuery("select * from clients");
-        int i = 0;
+    
         while (res.next()) {
-            data[i][0] = res.getInt(1);
-            data[i][1] = res.getString(2);
-            data[i][2] = res.getString(3);
-            data[i][3] = res.getString(4);
-            i++;
+        	
+        	Client aClient= new Client();
+        	aClient.setId(res.getInt(1));
+        	aClient.setNom(res.getString(2));
+        	aClient.setAdresse(res.getString(3));
+        	aClient.setVille(res.getString(4));
+        	aClient.setPays(res.getString(5));
+        	aClient.setTelephone(res.getString(6));
+        	aClient.setFax(res.getString(7));
+        	aClient.setEmail(res.getString(8));
+        	aClient.setSiteWeb(res.getString(9));
+        	
+        	clients.add(aClient);
         }
-        return data;
+        
+        return clients;
 
     }
 
@@ -70,7 +79,7 @@ public class DAOClients {
             client.setTelephone(res.getString(6));
             client.setFax(res.getString(7));
             client.setEmail(res.getString(8));
-            client.setSiteweb(res.getString(9));
+            client.setSiteWeb(res.getString(9));
 
         }
         return client;

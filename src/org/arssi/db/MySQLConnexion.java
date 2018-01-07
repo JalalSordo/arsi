@@ -4,7 +4,7 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
-package db;
+package org.arssi.db;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class MySQLConnexion {
 
     public Connection getMySQLConnection() throws SQLException, IOException {
        // ServerSocket server= new ServerSocket(3333);
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/gest-clients", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/gest_clients", "root", "root");
     }
 
     public static void main(String[] args) {
@@ -52,6 +52,7 @@ public class MySQLConnexion {
             }
 
         } catch (SQLException | IOException ex) {
+        	ex.printStackTrace();
         }
     }
 }

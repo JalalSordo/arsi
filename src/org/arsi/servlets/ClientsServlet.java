@@ -2,42 +2,44 @@ package org.arsi.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class HelloServlet
- */
-@WebServlet("/helloServlet")
-public class HelloServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import org.arssi.db.DAOClients;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public HelloServlet() {
-		super();
-		// TODO Auto-generated constructor stub
+@WebServlet(urlPatterns = {"/home"})
+public class ClientsServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	private DAOClients daoClients;
+
+	public ClientsServlet() {
+		daoClients = new DAOClients();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("HEY!");
+		try {
+			System.out.println(daoClients.getAllClients().size());
+			request.setAttribute("clients", daoClients.getAllClients());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		if (dispatcher != null) {
+			dispatcher.forward(request, response);
+		}
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String yourName = request.getParameter("yourName");
