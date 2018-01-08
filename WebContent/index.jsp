@@ -37,7 +37,17 @@
 </style>
 </head>
 <body>
-	<center><h1>Les Clients</h1></center>
+<div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
+	<center><h1>Gestion des clients</h1></center>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Rechercher</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Nom du client...">
+    </div>
+</div>
+
+	</div>
 		<c:forEach var="client" items="${clients}">
 		  <div class="col-sm-3 col-md-3">
 		    <div class="thumbnail" style="background-color: lightgray;">
@@ -60,6 +70,6 @@
 		  </div>
 
 		</c:forEach>
-	</table>
+	
 </body>
 </html>
