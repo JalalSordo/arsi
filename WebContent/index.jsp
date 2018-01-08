@@ -6,6 +6,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%
 	ArrayList<Client> clients = (ArrayList<Client>) request.getAttribute("clients");
+	String nomCLient=request.getParameter("nomClient");
+	if(nomCLient==null){
+		nomCLient="";
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,20 +52,14 @@
     	<input type="text"
     	 	   class="form-control"
     	  	   name="nomClient"
+    	  	   value="<%= nomCLient %>"
     	       style="width:50%;margin-left: 1.5%;"
-    	       placeholder="Nom du client..." />
-
+    	       placeholder="Nom du client..."/>
        <input type="submit"  class="btn btn-default" value="Rechercher!"/>
- 
 	</form> 
-      
-    
- 
       <span class="input-group-btn">
   		<a href="./ajouterClient"  class="btn btn-success" role="button">Ajouter un Client</a>
       </span>
-
-     
     </div>
 </div>
 

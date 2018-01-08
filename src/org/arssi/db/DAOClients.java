@@ -142,23 +142,30 @@ public class DAOClients {
         }
     }
 
-    //SQL : delete from clients where id=1
-    public Object[][] findClientByNom(String nom_search) throws SQLException {
+
+    public ArrayList<Client> findClientByNom(String nom_search) throws SQLException {
 
         Statement st = connection.createStatement();
-        ResultSet count = st.executeQuery("select count(*) from clients where nom like '%"+nom_search+"%'");
-        count.next();
-        Object[][] data = new Object[count.getInt(1)][4];
+        ArrayList<Client> clients = new ArrayList<Client>();
         ResultSet res = st.executeQuery("select * from clients where nom like '%"+nom_search+"%'");
-        int i = 0;
+    
         while (res.next()) {
-            data[i][0] = res.getInt(1);
-            data[i][1] = res.getString(2);
-            data[i][2] = res.getString(3);
-            data[i][3] = res.getString(4);
-            i++;
+        	
+        	Client aClient= new Client();
+        	aClient.setId(res.getInt(1));
+        	aClient.setNom(res.getString(2));
+        	aClient.setAdresse(res.getString(3));
+        	aClient.setVille(res.getString(4));
+        	aClient.setPays(res.getString(5));
+        	aClient.setTelephone(res.getString(6));
+        	aClient.setFax(res.getString(7));
+        	aClient.setEmail(res.getString(8));
+        	aClient.setSiteWeb(res.getString(9));
+        	
+        	clients.add(aClient);
         }
-        return data;
+        
+        return clients;
 
     }
 
