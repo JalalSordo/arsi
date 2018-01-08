@@ -28,29 +28,36 @@ Client clients =(Client) request.getAttribute("client");
 </style>
 </head>
 <body>
-<div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
-	<center><h1>Modifer client</h1></center>
-   
-    <div class="col-sm-3 col-md-3">
-		    <div class="thumbnail" style="background-color: lightgray;">
-		      <div class="caption">
-		        <h3 style="color:cornflowerblue;"><c:out value="${client.nom}"/></h3>
-					<p><span class="span1">ID : </span><span class="span2 badge"><c:out value="${client.id}"/></span></p>
-					<p><span class="span1">Adresse : </span><span class="span2"><c:out value="${client.adresse}"/></span></p>
-					<p><span class="span1">Ville : </span><span class="span2"><c:out value="${client.ville}" /></span></p>
-					<p><span class="span1">Pays : </span><span class="span2"><c:out value="${client.pays}" /></span></p>
-					<p><span class="span1">Téléphone : </span><span class="span2"><c:out value="${client.telephone}"/></span></p>
-					<p><span class="span1">Fax : </span><span class="span2"><c:out value="${client.fax}" /></span></p>
-					<p><span class="span1">Email : </span><span class="span2"><c:out value="${client.email}" /></span></p>
-					<p><span class="span1">Site Web : </span><span class="span2"><c:out value="${client.siteWeb}" /></span></p>
-		         	<center>
-		         		<a href="./modifyClient?id=<c:out value="${client.id}"/>" class="btn btn-success" role="button">Confirmer</a>
-		        		<a  onclick="window.history.back()" class="btn btn-primary" role="button">Annuler</a>
-		        	</center>
-		      </div>
-		    </div>
-		  </div>
-   
-	
+	<div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
+		<center><h1>Modifer client</h1></center>
+	    <div class="container">
+	    	<div class="col-lg-4 col-lg-offset-4">
+			    <div class="thumbnail" style="background-color: lightgray;">
+			      <div class="caption">
+		         	<form action="modifyClient" method="post">
+			     		<input type="hidden"  name="id" value="<c:out value="${client.id}"/>"/>
+			     		<table>
+							<tr><td><span class="span1">ID : </span></td><td><span class="badge"><c:out value="${client.id}"/></span></td></tr>
+							<tr><td><span class="span1">Nom : </span></td><td><input type="text" class="form-control" name="nom" value="<c:out value="${client.nom}"/>"/></td></tr>
+							<tr><td><span class="span1">Adresse : </span></td><td><input type="text" class="form-control" name="adresse" value="<c:out value="${client.adresse}"/>"/></td></tr>
+							<tr><td><span class="span1">Ville : </span></td><td><input type="text" class="form-control" name="ville" value="<c:out value="${client.ville}"/>"/></td></tr>
+							<tr><td><span class="span1">Pays : </span></td><td><input type="text" class="form-control" name="pays" value="<c:out value="${client.pays}"/>"/></td></tr>
+							<tr><td><span class="span1">Téléphone : </span></td><td><input type="text" class="form-control" name="telephone" value="<c:out value="${client.telephone}"/>"/></td></tr>
+							<tr><td><span class="span1">Fax : </span></td><td><input type="text" class="form-control" name="fax" value="<c:out value="${client.fax}"/>"/></td></tr>
+							<tr><td><span class="span1">Email : </span></td><td><input type="text" class="form-control" name="email" value="<c:out value="${client.email}"/>"/></td></tr>
+							<tr><td><span class="span1">Site Web : </span></td><td><input type="text" class="form-control" name="siteWeb" value="<c:out value="${client.siteWeb}"/>"/></td></tr>
+						</table>
+			         	<center>
+				         	<div style="margin-top:10px;">
+				         		<input type="submit" class="btn btn-success" value="Confirmer"/>
+				        		<a onclick="window.history.back()" class="btn btn-primary" role="button">Annuler</a>
+				        	</div>
+			        	</center>
+		        	</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	</div>
 </body>
 </html>
