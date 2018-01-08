@@ -26,9 +26,7 @@ public class ClientsServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("HEY!");
 		try {
-			System.out.println(daoClients.getAllClients().size());
 			request.setAttribute("clients", daoClients.getAllClients());
 		} catch (SQLException e) {
 			e.printStackTrace();

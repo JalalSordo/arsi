@@ -22,33 +22,43 @@
 <script src="js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Client Management</title>
+<style type="text/css">
+
+.span1{
+    font-weight: bolder;
+    width: 95px;
+    display: inline-block;
+
+}
+.span2{
+
+
+}
+</style>
 </head>
 <body>
-	<h1>Liste des Clients</h1>
-	<table class="table">
-		<tr>
-			<th>Id</th>
-			<th>Nom</th>
-			<th>Adresse</th>
-			<th>Ville</th>
-			<th>Pays</th>
-			<th>Téléphone</th>
-			<th>Fax</th>
-			<th>Email</th>
-			<th>Site Web</th>
-		</tr>
+	<center><h1>Les Clients</h1></center>
 		<c:forEach var="client" items="${clients}">
-			<tr>
-				<td><c:out value="${client.id}" /></td>
-				<td><c:out value="${client.nom}" /></td>
-				<td><c:out value="${client.adresse}" /></td>
-				<td><c:out value="${client.ville}" /></td>
-				<td><c:out value="${client.pays}" /></td>
-				<td><c:out value="${client.telephone}" /></td>
-				<td><c:out value="${client.fax}" /></td>
-				<td><c:out value="${client.email}" /></td>
-				<td><c:out value="${client.siteWeb}" /></td>
-			</tr>
+		  <div class="col-sm-3 col-md-3">
+		    <div class="thumbnail" style="background-color: lightgray;">
+		      <div class="caption">
+		        <h3 style="color:cornflowerblue;"><c:out value="${client.nom}"/></h3>
+					<p><span class="span1">ID : </span><span class="span2 badge"><c:out value="${client.id}"/></span></p>
+					<p><span class="span1">Adresse : </span><span class="span2"><c:out value="${client.adresse}"/></span></p>
+					<p><span class="span1">Ville : </span><span class="span2"><c:out value="${client.ville}" /></span></p>
+					<p><span class="span1">Pays : </span><span class="span2"><c:out value="${client.pays}" /></span></p>
+					<p><span class="span1">Téléphone : </span><span class="span2"><c:out value="${client.telephone}"/></span></p>
+					<p><span class="span1">Fax : </span><span class="span2"><c:out value="${client.fax}" /></span></p>
+					<p><span class="span1">Email : </span><span class="span2"><c:out value="${client.email}" /></span></p>
+					<p><span class="span1">Site Web : </span><span class="span2"><c:out value="${client.siteWeb}" /></span></p>
+		         	<center>
+		         		<a href="./modifyClient?id=<c:out value="${client.id}"/>" class="btn btn-primary" role="button">Modifier</a>
+		        		<a href="./deleteClient?id=<c:out value="${client.id}"/>" class="btn btn-danger" role="button">supprimer</a>
+		        	</center>
+		      </div>
+		    </div>
+		  </div>
+
 		</c:forEach>
 	</table>
 </body>
