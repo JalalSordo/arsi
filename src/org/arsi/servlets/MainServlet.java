@@ -46,6 +46,7 @@ public class MainServlet extends HttpServlet {
 		} else if (path.equals("/modifyClient")) {
 			//DOING MODIFY
 			destination="/edit-client.jsp";
+			
 		} else if (path.equals("/rechercherClient")) {
 			//DOING Search
 			String nomClient=request.getParameter("nomClient");
@@ -56,10 +57,9 @@ public class MainServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("clients", clients);
-			 destination="/index.jsp";
 		} else if (path.equals("/ajouterClient")) {
 			//DOING ADD
-
+			destination="/add-client.jsp";
 		} else {
 			try {
 				request.setAttribute("clients", daoClients.getAllClients());
