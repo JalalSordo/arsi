@@ -39,11 +39,29 @@
 <body>
 <div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
 	<center><h1>Gestion des clients</h1></center>
+   
+    
+    
     <div class="input-group">
+    <form action="rechercherClient" method="get">
+    	
+    	<input type="text"
+    	 	   class="form-control"
+    	  	   name="nomClient"
+    	       style="width:50%;margin-left: 1.5%;"
+    	       placeholder="Nom du client..." />
+
+       <input type="submit"  class="btn btn-default" value="Rechercher!"/>
+ 
+	</form> 
+      
+    
+ 
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Rechercher</button>
+  		<a href="./ajouterClient"  class="btn btn-success" role="button">Ajouter un Client</a>
       </span>
-      <input type="text" class="form-control" placeholder="Nom du client...">
+
+     
     </div>
 </div>
 
