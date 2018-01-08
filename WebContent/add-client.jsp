@@ -25,12 +25,8 @@
 </style>
 </head>
 <body>
-<div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
-	<center><h1>Ajouter Client</h1></center>
-   
-    <body>
 	<div class="jumbotron" style="margin-bottom: -40px;margin-top: -60px;">
-		<center><h1>Modifer client</h1></center>
+		<center><h1>Ajouter client</h1></center>
 	    <div class="container">
 	    	<div class="col-lg-4 col-lg-offset-4">
 			    <div class="thumbnail" style="background-color: lightgray;">
