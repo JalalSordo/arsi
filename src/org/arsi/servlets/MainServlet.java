@@ -45,6 +45,12 @@ public class MainServlet extends HttpServlet {
 
 		} else if (path.equals("/modifyClient")) {
 			//DOING MODIFY
+			Integer clientID=Integer.parseInt(request.getParameter("id"));
+			try {
+				request.setAttribute("client", daoClients.getClientByID(clientID));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			destination="/edit-client.jsp";
 			
 		} else if (path.equals("/rechercherClient")) {
